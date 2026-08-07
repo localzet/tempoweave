@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none';">
+  <title>TempoWeave</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">T</div><div><b>TempoWeave</b><small>work intelligence</small></div></div>
+      <nav id="nav">
+        <button data-view="dashboard" class="active"><span>◈</span> Обзор</button>
+        <button data-view="week"><span>▦</span> Неделя</button>
+        <button data-view="timers"><span>◷</span> Таймеры</button>
+        <button data-view="projects"><span>◆</span> Проекты и ставки</button>
+        <button data-view="money"><span>₽</span> Выплаты и долги</button>
+        <button data-view="receipts"><span>▧</span> Чеки НПД</button>
+        <button data-view="integrations"><span>⌁</span> Интеграции</button>
+        <button data-view="settings"><span>⚙</span> Настройки</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div id="sync-indicator" class="sync-pill"><i></i><span>Локально</span></div>
+        <small>Данные остаются на устройстве</small>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div><h1 id="page-title">Обзор</h1><p id="page-subtitle">Доход, загрузка и расчёты</p></div>
+        <div class="top-actions"><button id="sync-now" class="ghost">↻ Синхронизировать</button><button id="quick-timer" class="primary">＋ Таймер</button></div>
+      </header>
+      <section id="content" class="content"><div class="loader">Загрузка локальной базы…</div></section>
+    </main>
+  </div>
+  <div id="toast-host"></div>
+  <dialog id="quick-dialog">
+    <form method="dialog" id="quick-timer-form" class="dialog-form">
+      <div class="dialog-head"><div><h2>Новый таймер</h2><p>Можно запускать несколько параллельно</p></div><button value="cancel" class="icon-btn">×</button></div>
+      <label>Проект<select name="projectId" required></select></label>
+      <div class="two"><label>Активность<input name="activityName" placeholder="Разработка"></label><label>Jira<input name="jiraIssueKey" placeholder="ABC-123"></label></div>
+      <label>Описание<input name="description" placeholder="Что делаем"></label>
+      <label>Теги<input name="tags" placeholder="backend, urgent"></label>
+      <div class="dialog-actions"><button value="cancel" class="ghost">Отмена</button><button value="default" class="primary">Запустить</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
